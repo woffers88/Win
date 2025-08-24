@@ -199,8 +199,8 @@
   <!-- ======================= FOOTER ======================= -->
   <footer class="container">
     <div class="footer-links">
-      <a id="rules" href="#" onclick="openModal('rulesModal');return false;">Terms & Rules</a>
-      <a id="privacy" href="#" onclick="openModal('privacyModal');return false;">Privacy Policy</a>
+      <a id="rules" href="#rules" data-open="rulesModal">Terms & Rules</a>
+      <a id="privacy" href="#privacy" data-open="privacyModal">Privacy Policy</a>
       
     </div>
     <p style="margin-top:12px">Disclaimer: This page is for marketing purposes only and is not affiliated with Walmart®. All trademarks are the property of their respective owners.</p>
@@ -221,7 +221,7 @@
         <li>Official rules and limitations appear on the organizer’s page.</li>
         <li>We do not grant prizes directly on this page — fulfillment is handled by the organizer.</li>
       </ul>
-      <button class="cta sec" onclick="closeModal('rulesModal')">Close</button>
+      <button class="cta sec close-modal" data-close="rulesModal">Close</button>
     </div>
   </div>
 
@@ -229,7 +229,7 @@
     <div class="modal-card">
       <h3>Condensed Privacy Policy</h3>
       <p>We do not collect personal data on this page other than outbound click tracking for analytics. Any personal information requested will be collected on the organizer’s official offer page.</p>
-      <button class="cta sec" onclick="closeModal('privacyModal')">Close</button>
+      <button class="cta sec close-modal" data-close="privacyModal">Close</button>
     </div>
   </div>
 
@@ -237,7 +237,7 @@
   <style>
     /* Simple modal styling */
     .modal { position: fixed; inset: 0; background: rgba(2,6,23,0.7); display: grid; place-items: center; padding: 20px; z-index: 40; }
-    .modal-card { background: #0f172a; color: var(--txt); width: min(720px, 92vw); border-radius: 16px; border: 1px solid rgba(255,255,255,0.12); box-shadow: var(--shadow); padding: 20px; }
+    .modal-card { background: #0f172a; color: var(--txt); width: min(720px, 92vw); border-radius: 16px; border: 1px solid rgba(255,255,255,0.12); box-shadow: var(--shadow); padding: 20px; position: relative; }
     .modal-card h3 { margin-top: 0; }
   </style>
 
@@ -271,10 +271,19 @@
       lastY = y;
     });
 
-    // Simple modals
-    function openModal(id){ document.getElementById(id).hidden = false; }
-    function closeModal(id){ document.getElementById(id).hidden = true; }
-    window.openModal = openModal; window.closeModal = closeModal;
+    // Simple modals (no inline handlers, supports backdrop & ESC)
+    function openModal(id){ const m = document.getElementById(id); if (m) m.hidden = false; }
+    function closeModal(id){ const m = document.getElementById(id); if (m) m.hidden = true; }
+    document.querySelectorAll('[data-open]').forEach(el=>{
+      el.addEventListener('click', (e)=>{ e.preventDefault(); openModal(el.getAttribute('data-open')); });
+    });
+    document.querySelectorAll('[data-close]').forEach(el=>{
+      el.addEventListener('click', ()=> closeModal(el.getAttribute('data-close')));
+    });
+    document.querySelectorAll('.modal').forEach(modal=>{
+      modal.addEventListener('click', (e)=>{ if (e.target === modal) modal.hidden = true; });
+    });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ document.querySelectorAll('.modal').forEach(m=> m.hidden = true); } });
 
     // Prevent click if not agreed
     [ctaPrimary, ctaHeader, ctaSticky].forEach(btn => {
