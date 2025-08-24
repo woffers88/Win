@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Enter for Your Chance to Win – Up to $2,000</title>
-  <meta name="description" content="High‑conversion CPA landing page – Enter for your chance to win up to $2,000. Fast opt‑in, clear CTAs, trust elements, and compliance sections." />
+  <meta name="description" content="Simple, fast entry. US only. Click to enter." />
   <meta property="og:title" content="Enter for Your Chance to Win – Up to $2,000" />
   <meta property="og:description" content="Instant entry. US only. Join now!" />
   <meta property="og:type" content="website" />
@@ -12,93 +12,52 @@
   <meta name="theme-color" content="#0ea5e9" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b1220;
-      --card: rgba(255,255,255,0.06);
-      --card-strong: rgba(255,255,255,0.12);
-      --txt: #eaf2ff;
-      --muted: #a8b3cf;
-      --brand: #0ea5e9; /* sky-500 */
-      --brand-700: #0369a1;
-      --accent: #22c55e; /* green-500 */
-      --warning: #f59e0b; /* amber-500 */
-      --error: #ef4444;
-      --radius: 18px;
-      --shadow: 0 15px 50px rgba(2, 6, 23, 0.45);
+      --bg: #0b1220; --txt: #eaf2ff; --muted:#a8b3cf;
+      --card: rgba(255,255,255,0.06); --radius:18px;
+      --brand:#0ea5e9; --accent:#22c55e; --shadow:0 15px 50px rgba(2,6,23,.45);
     }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0; font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, 'Noto Sans', sans-serif;
-      color: var(--txt); background: radial-gradient(1200px 600px at 80% -20%, #1f2937, transparent 60%),
-                radial-gradient(900px 400px at -10% 20%, #0c4a6e, transparent 50%),
-                linear-gradient(180deg, #020617 0%, #0b1220 60%, #0b1220 100%);
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,'Noto Sans',sans-serif;
+      color:var(--txt);
+      background: radial-gradient(1200px 600px at 80% -20%, #1f2937, transparent 60%),
+                  radial-gradient(900px 400px at -10% 20%, #0c4a6e, transparent 50%),
+                  linear-gradient(180deg, #020617 0%, #0b1220 60%, #0b1220 100%);
     }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1100px, 92vw); margin: 0 auto; }
-    /* Header */
-    .header { position: sticky; top: 0; z-index: 20; backdrop-filter: saturate(140%) blur(10px); background: rgba(7, 10, 22, 0.6); border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-    .brand { display: flex; gap: 10px; align-items: center; }
-    .badge { padding: 6px 10px; border-radius: 999px; background: rgba(34, 197, 94, 0.12); color: #bbf7d0; font-size: 12px; border: 1px solid rgba(34,197,94,0.25); }
-    .cta-header { padding: 10px 16px; background: linear-gradient(135deg, var(--brand), #38bdf8); border-radius: 12px; color: white; font-weight: 700; box-shadow: var(--shadow); }
-    .cta-header:hover { filter: brightness(1.08); }
-
-    /* Hero */
-    .hero { padding: 48px 0 20px; text-align: center; }
-    .hero h1 { font-size: clamp(26px, 4vw, 48px); line-height: 1.2; margin: 18px 0 12px; letter-spacing: -0.4px; }
-    .hero p { color: var(--muted); font-size: clamp(14px, 1.8vw, 18px); margin: 0 auto 22px; max-width: 720px; }
-    .hero-card { margin: 28px auto 0; background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0; }
-    .hero-media { background: radial-gradient(600px 240px at 50% 10%, rgba(14,165,233,0.25), transparent 60%); padding: 26px; display: flex; align-items: center; justify-content: center; }
-    .hero-media img { width: 100%; height: auto; border-radius: 14px; border: 1px solid rgba(255,255,255,0.18); }
-    .hero-content { padding: 26px; display: grid; align-content: center; gap: 18px; text-align: left; }
-    .checklist { display: grid; gap: 10px; }
-    .check { display: flex; align-items: center; gap: 10px; }
-    .check svg { flex: 0 0 22px; }
-    .cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 20px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), #4ade80); font-weight: 800; color: #052e16; border: 0; cursor: pointer; transition: transform .1s ease, filter .2s; }
-    .cta:hover { filter: brightness(1.05); transform: translateY(-1px); }
-    .cta.sec { background: linear-gradient(135deg, var(--brand), #38bdf8); color: white; }
-    .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .note { color: var(--muted); font-size: 12px; }
-
-    /* Steps */
-    .section { padding: 46px 0; }
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .card { background: var(--card); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); min-height: 160px; }
-    .card h3 { margin: 10px 0 6px; font-size: 20px; }
-    .card p { color: var(--muted); margin: 0; font-size: 14px; }
-
-    /* Trust */
-    .trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .trust .pill { background: var(--card-strong); border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; padding: 12px 16px; text-align: center; font-weight: 700; }
-
-    /* FAQ */
-    details { background: var(--card); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 14px 16px; }
-    details + details { margin-top: 12px; }
-    summary { cursor: pointer; font-weight: 700; }
-    details p { color: var(--muted); margin: 10px 0 0; }
-
-    /* Footer */
-    footer { padding: 40px 0 60px; color: var(--muted); }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
-
-    /* Sticky bar */
-    .sticky-bar { position: fixed; bottom: 16px; inset-inline: 16px; z-index: 30; background: linear-gradient(135deg, rgba(14,165,233,0.92), rgba(34,197,94,0.92)); color: #052e16; border-radius: 16px; box-shadow: var(--shadow); display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; padding: 12px; }
-    .sticky-bar .cta { background: rgba(255,255,255,0.95); color: #052e16; }
-
-    /* Form consent */
-    .consent { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--muted); }
-    .consent input { margin-top: 4px; }
-
-    /* Responsive */
-    @media (max-width: 980px) { .hero-card { grid-template-columns: 1fr; } }
-    @media (max-width: 860px) { .cards { grid-template-columns: 1fr; } .trust { grid-template-columns: 1fr 1fr; } }
+    .container{width:min(1100px,92vw); margin:0 auto}
+    .header{position:sticky;top:0;z-index:20;backdrop-filter:saturate(140%) blur(10px);background:rgba(7,10,22,.6);border-bottom:1px solid rgba(255,255,255,.08)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center}
+    .badge{padding:6px 10px;border-radius:999px;background:rgba(34,197,94,.12);color:#bbf7d0;font-size:12px;border:1px solid rgba(34,197,94,.25)}
+    .cta-header{padding:10px 16px;background:linear-gradient(135deg,#0ea5e9,#38bdf8);border-radius:12px;color:#fff;font-weight:800;box-shadow:var(--shadow)}
+    .hero{padding:48px 0 20px;text-align:center}
+    .hero h1{font-size:clamp(26px,4vw,48px);line-height:1.2;margin:18px 0 12px;letter-spacing:-.4px}
+    .hero p{color:var(--muted);font-size:clamp(14px,1.8vw,18px);margin:0 auto 22px;max-width:720px}
+    .hero-card{margin:28px auto 0;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr}
+    .hero-media{background:radial-gradient(600px 240px at 50% 10%,rgba(14,165,233,.25),transparent 60%);padding:26px;display:flex;align-items:center;justify-content:center}
+    .hero-media img{width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,.18)}
+    .hero-content{padding:26px;display:grid;align-content:center;gap:18px;text-align:left}
+    .check{display:flex;align-items:center;gap:10px}
+    .check svg{flex:0 0 22px}
+    .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 20px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#4ade80);font-weight:800;color:#052e16;border:0;cursor:pointer;transition:transform .1s ease, filter .2s}
+    .cta:hover{filter:brightness(1.05);transform:translateY(-1px)}
+    .cta-row{display:grid;grid-template-columns:1fr;gap:12px}
+    .section{padding:46px 0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);min-height:160px}
+    .card h3{margin:10px 0 6px;font-size:20px}
+    .card p{color:var(--muted);margin:0;font-size:14px}
+    .sticky-bar{position:fixed;bottom:16px;inset-inline:16px;z-index:30;background:linear-gradient(135deg,rgba(14,165,233,.92),rgba(34,197,94,.92));color:#052e16;border-radius:16px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:12px}
+    .sticky-bar .cta{background:rgba(255,255,255,.95);color:#052e16}
+    footer{padding:40px 0 60px;color:#a8b3cf}
+    @media (max-width:980px){.hero-card{grid-template-columns:1fr}}
+    @media (max-width:860px){.cards{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <!-- ======================= HEADER ======================= -->
   <header class="header">
     <div class="container header-inner">
       <div class="brand">
@@ -109,207 +68,71 @@
     </div>
   </header>
 
-  <!-- ======================== HERO ======================== -->
   <section class="hero container">
-    <h1>Enter for your chance to <span style="color:#38bdf8">win up to $2,000</span> — fast, secure entry</h1>
-    <p>Open to US residents only. Click the button below to enter via the official form, then follow the simple steps outlined below.</p>
+    <h1>Enter for your chance to <span style="color:#38bdf8">win up to $2,000</span> — fast entry</h1>
+    <p>US audience only. Click below and follow the official entry steps.</p>
 
     <div class="hero-card" id="participate">
       <div class="hero-media">
-        <!-- Replace the path below with your banner: place win.png in an assets folder or update the path -->
         <img src="assets/win.png" alt="Enter to win up to $2,000 – Giveaway banner" />
       </div>
       <div class="hero-content">
-        <div class="checklist">
-          <div class="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div>Free & quick entry (no credit card required)</div></div>
-          <div class="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div>US‑targeted traffic — higher conversion potential</div></div>
-          <div class="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div>Privacy‑friendly page — no misleading claims</div></div>
-        </div>
-
-        <label class="consent">
-          <input type="checkbox" id="agree" />
-          <span>I agree to the <a href="#rules" style="text-decoration:underline">Terms & Rules</a> and <a href="#privacy" style="text-decoration:underline">Privacy Policy</a>, and acknowledge this page is not affiliated with Walmart®.</span>
-        </label>
-
+        <div class="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>Free & quick entry (no credit card required)</div></div>
+        <div class="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>US-targeted traffic — higher conversion potential</div></div>
         <div class="cta-row">
           <a id="ctaPrimary" class="cta" href="#" rel="nofollow noopener" target="_blank">Enter Now</a>
-          <a id="ctaSecondary" class="cta sec" href="#faq">See Details</a>
         </div>
-        <div class="note">*The entry button activates only after you accept the terms.</div>
       </div>
     </div>
   </section>
 
-  <!-- ======================= STEPS ======================== -->
   <section class="section container">
     <h2 style="margin:0 0 16px; font-size:24px">How it works</h2>
     <div class="cards">
-      <div class="card">
-        <div class="pill" style="background:rgba(34,197,94,0.14);display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(34,197,94,0.3)">Step 1</div>
-        <h3>Click “Enter Now”</h3>
-        <p>You’ll be taken to the official offer/entry form to securely submit your basic details.</p>
-      </div>
-      <div class="card">
-        <div class="pill" style="background:rgba(14,165,233,0.14);display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(14,165,233,0.3)">Step 2</div>
-        <h3>Complete the requirements</h3>
-        <p>Follow the instructions on the offer page (e.g., email confirmation or a short survey) as required.</p>
-      </div>
-      <div class="card">
-        <div class="pill" style="background:rgba(245,158,11,0.14);display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(245,158,11,0.3)">Step 3</div>
-        <h3>Watch your inbox</h3>
-        <p>You’ll receive notifications or next steps from the organizer if you qualify.</p>
-      </div>
+      <div class="card"><h3>Step 1</h3><p>Click “Enter Now” to go to the official offer page.</p></div>
+      <div class="card"><h3>Step 2</h3><p>Complete the requirements shown on the organizer page.</p></div>
+      <div class="card"><h3>Step 3</h3><p>Watch your inbox for updates from the organizer.</p></div>
     </div>
   </section>
 
-  <!-- ======================= TRUST ======================== -->
-  <section class="section container">
-    <h2 style="margin:0 0 16px; font-size:24px">Trust & Safety</h2>
-    <div class="trust">
-      <div class="pill">SSL‑secured connection</div>
-      <div class="pill">Privacy protection</div>
-      <div class="pill">No hidden fees</div>
-      <div class="pill">Fast support</div>
-    </div>
-  </section>
-
-  <!-- ======================== FAQ ======================== -->
-  <section id="faq" class="section container">
-    <h2 style="margin:0 0 16px; font-size:24px">FAQ</h2>
-
-    <details>
-      <summary>Is this promotion affiliated with Walmart®?</summary>
-      <p>No. This page is for marketing purposes only and is not affiliated with or endorsed by Walmart®. Walmart® is a registered trademark of its owner. Entry takes place on the official organizer’s page after you click “Enter Now”.</p>
-    </details>
-
-    <details>
-      <summary>Is entry free?</summary>
-      <p>Yes, basic entry is free. Additional requirements may apply as specified on the official offer page (such as confirming your email or completing a short survey).</p>
-    </details>
-
-    <details>
-      <summary>Who is eligible?</summary>
-      <p>US residents aged 18+ (unless the official rules state otherwise). Always read the official rules on the offer page.</p>
-    </details>
-  </section>
-
-  <!-- ======================= FOOTER ======================= -->
-  <footer class="container">
-    <div class="footer-links">
-      <a id="rules" href="#rules" data-open="rulesModal">Terms & Rules</a>
-      <a id="privacy" href="#privacy" data-open="privacyModal">Privacy Policy</a>
-      
-    </div>
-    <p style="margin-top:12px">Disclaimer: This page is for marketing purposes only and is not affiliated with Walmart®. All trademarks are the property of their respective owners.</p>
-  </footer>
-
-  <!-- ================ STICKY BAR (Mobile CTA) ================ -->
   <div class="sticky-bar" id="stickyBar" hidden>
     <div>Ready? Today could be your lucky day 🎉</div>
     <a id="ctaSticky" class="cta" href="#" rel="nofollow noopener" target="_blank">Enter Now</a>
   </div>
 
-  <!-- ======================== MODALS ======================== -->
-  <div id="rulesModal" class="modal" hidden>
-    <div class="modal-card">
-      <h3>Condensed Terms & Rules</h3>
-      <ul>
-        <li>Offer intended for US residents; 18+ unless otherwise noted.</li>
-        <li>Official rules and limitations appear on the organizer’s page.</li>
-        <li>We do not grant prizes directly on this page — fulfillment is handled by the organizer.</li>
-      </ul>
-      <button class="cta sec close-modal" data-close="rulesModal">Close</button>
-    </div>
-  </div>
-
-  <div id="privacyModal" class="modal" hidden>
-    <div class="modal-card">
-      <h3>Condensed Privacy Policy</h3>
-      <p>We do not collect personal data on this page other than outbound click tracking for analytics. Any personal information requested will be collected on the organizer’s official offer page.</p>
-      <button class="cta sec close-modal" data-close="privacyModal">Close</button>
-    </div>
-  </div>
-
-  
-  <style>
-    /* Simple modal styling */
-    .modal { position: fixed; inset: 0; background: rgba(2,6,23,0.7); display: grid; place-items: center; padding: 20px; z-index: 40; }
-    .modal-card { background: #0f172a; color: var(--txt); width: min(720px, 92vw); border-radius: 16px; border: 1px solid rgba(255,255,255,0.12); box-shadow: var(--shadow); padding: 20px; position: relative; }
-    .modal-card h3 { margin-top: 0; }
-  </style>
+  <footer class="container">
+    <p style="margin-top:12px">Disclaimer: This page is for marketing purposes only and is not affiliated with Walmart®. All trademarks are the property of their respective owners.</p>
+  </footer>
 
   <script>
-    // ======= CONFIG: put your CPA link here =======
+    // Direct CPA click with UTM passthrough; no modals, no consent
     const CPA_URL = 'https://getafilenow.com/show.php?l=0&u=190503&id=68831';
-    // ==============================================
-
-    const agree = document.getElementById('agree');
     const ctaPrimary = document.getElementById('ctaPrimary');
-    const ctaSecondary = document.getElementById('ctaSecondary');
-    const ctaHeader = document.getElementById('ctaHeader');
-    const ctaSticky = document.getElementById('ctaSticky');
-    const stickyBar = document.getElementById('stickyBar');
+    const ctaHeader  = document.getElementById('ctaHeader');
+    const ctaSticky  = document.getElementById('ctaSticky');
+    const stickyBar  = document.getElementById('stickyBar');
 
-    function setHrefEnabled() {
-      const enabled = agree.checked;
-      const href = enabled ? CPA_URL : '#';
-      [ctaPrimary, ctaHeader, ctaSticky].forEach(el => { if (el) el.setAttribute('href', href); });
-      ctaPrimary.style.filter = enabled ? '' : 'grayscale(0.6)';
-      ctaPrimary.style.cursor = enabled ? 'pointer' : 'not-allowed';
-    }
-    agree.addEventListener('change', setHrefEnabled);
-    setHrefEnabled();
-
-    // Sticky bar visible on scroll for mobile/long pages
-    let lastY = 0; const revealY = 400;
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY || document.documentElement.scrollTop;
-      stickyBar.hidden = y < revealY;
-      lastY = y;
-    });
-
-    // Simple modals (no inline handlers, supports backdrop & ESC)
-    function openModal(id){ const m = document.getElementById(id); if (m) m.hidden = false; }
-    function closeModal(id){ const m = document.getElementById(id); if (m) m.hidden = true; }
-    document.querySelectorAll('[data-open]').forEach(el=>{
-      el.addEventListener('click', (e)=>{ e.preventDefault(); openModal(el.getAttribute('data-open')); });
-    });
-    document.querySelectorAll('[data-close]').forEach(el=>{
-      el.addEventListener('click', ()=> closeModal(el.getAttribute('data-close')));
-    });
-    document.querySelectorAll('.modal').forEach(modal=>{
-      modal.addEventListener('click', (e)=>{ if (e.target === modal) modal.hidden = true; });
-    });
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape'){ document.querySelectorAll('.modal').forEach(m=> m.hidden = true); } });
-
-    // Prevent click if not agreed
-    [ctaPrimary, ctaHeader, ctaSticky].forEach(btn => {
-      btn && btn.addEventListener('click', (e) => {
-        if (!agree.checked) {
-          e.preventDefault();
-          alert('Please accept the terms before continuing.');
-        }
-      });
-    });
-
-    // UTM helper — adds campaign params to the final link
     function addUTM(url) {
       const params = new URLSearchParams(window.location.search);
-      const utm = new URL(url);
+      const out = new URL(url);
       ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=>{
-        if (params.get(k)) utm.searchParams.set(k, params.get(k));
+        if (params.get(k)) out.searchParams.set(k, params.get(k));
       });
-      return utm.toString();
+      return out.toString();
     }
-    [ctaPrimary, ctaHeader, ctaSticky].forEach(el=>{
-      el && el.addEventListener('mousedown', ()=>{
-        if (!agree.checked) return;
-        const withUtm = addUTM(CPA_URL);
-        el.setAttribute('href', withUtm);
-      });
+    function setLinks(){
+      const url = addUTM(CPA_URL);
+      [ctaPrimary, ctaHeader, ctaSticky].forEach(el => { if (el) el.setAttribute('href', url); });
+    }
+    setLinks();
+
+    // Sticky bar on scroll
+    const revealY = 400;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      if (stickyBar) stickyBar.hidden = y < revealY;
     });
   </script>
 </body>
