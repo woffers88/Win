@@ -147,29 +147,29 @@
   </footer>
 
   <script>
-    // ===== CONFIG: your CPA link (PropellerAds will replace {SUBID}) =====
+    // ===== 1) Read subid (PropellerAds supplies it via Target URL ?subid={SUBID}) =====
+    const params = new URLSearchParams(location.search);
+    const subidFromUrl = params.get('subid');
+
+    // Fallback لو ما وصل subid لأي سبب (ننشئ قيمة بسيطة حتى لا نخسر التتبع تمامًا)
+    const fallbackSubid = String(Date.now());
+    const clickId = subidFromUrl && subidFromUrl !== '{SUBID}' ? subidFromUrl : fallbackSubid;
+
+    // ===== 2) Build CPA URL with subid and pass UTM if present =====
     const CPA_BASE = 'https://getafilenow.com/show.php?l=0&u=190503&id=68831';
-    const CPA_URL  = `${CPA_BASE}&subid={SUBID}`;
+    const cpaUrl = new URL(CPA_BASE);
+    cpaUrl.searchParams.set('subid', clickId);
 
-    // Append page UTM params to CPA URL (if present)
-    function withUTM(url){
-      try{
-        const params = new URLSearchParams(window.location.search);
-        const u = new URL(url);
-        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=>{
-          if(params.get(k)) u.searchParams.set(k, params.get(k));
-        });
-        return u.toString();
-      }catch(e){ return url; }
-    }
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(k=>{
+      if(params.get(k)) cpaUrl.searchParams.set(k, params.get(k));
+    });
 
-    // Assign final CPA link to all CTA anchors
+    // ===== 3) Assign final URL to all CTA links =====
     function assignCPA(){
-      const finalUrl = withUTM(CPA_URL);
-      document.querySelectorAll('[data-cpa]').forEach(a=> a.setAttribute('href', finalUrl));
+      document.querySelectorAll('[data-cpa]').forEach(a=> a.setAttribute('href', cpaUrl.toString()));
     }
 
-    // Track CTA clicks in Google Ads
+    // ===== 4) Track CTA clicks in Google Ads =====
     function trackCtaClicks() {
       document.querySelectorAll('[data-cpa]').forEach(a => {
         a.addEventListener('click', () => {
@@ -184,7 +184,7 @@
       });
     }
 
-    // Sticky bar on scroll
+    // ===== 5) Sticky bar on scroll =====
     const stickyBar = document.getElementById('stickyBar');
     function onScroll(){
       const y = window.scrollY || document.documentElement.scrollTop;
