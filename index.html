@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17505085730">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17505085730');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17505085730"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17505085730');
+  </script>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Win up to $2,000 – Instant Entry</title>
-  <meta name="description" content="High‑conversion CPA landing page. US audience only. One clear CTA to enter now." />
+  <meta name="description" content="High-conversion CPA landing page. US audience only. One clear CTA to enter now." />
   <meta property="og:title" content="Win up to $2,000 – Instant Entry" />
   <meta property="og:description" content="US only. Fast entry. Click to join now." />
   <meta property="og:type" content="website" />
@@ -110,13 +108,13 @@
           <div class="li"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <div>Free & quick entry (no credit card required)</div></div>
           <div class="li"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div>US‑targeted traffic — higher conversion potential</div></div>
+            <div>US-targeted traffic — higher conversion potential</div></div>
           <div class="li"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 7L9 18l-5-5" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div>Privacy‑friendly page — no misleading claims</div></div>
+            <div>Privacy-friendly page — no misleading claims</div></div>
         </div>
 
         <div class="cta-row">
-          <a class="cta pulse" data-cpa href="#" rel="nofollow noopener" target="_blank" aria-label="Enter now primary CTA">Enter Now</a>
+          <a class="cta pulse" data-cpa href="#" rel="nofollow noopener sponsored" target="_blank" aria-label="Enter now primary CTA">Enter Now</a>
         </div>
       </div>
     </div>
@@ -135,22 +133,25 @@
   <!-- Sticky CTA (mobile/scroll) -->
   <div class="sticky-bar" id="stickyBar" hidden>
     <div>Ready? Today could be your lucky day 🎉</div>
-    <a data-cpa href="#" rel="nofollow noopener" target="_blank" aria-label="Enter now sticky CTA">Enter Now</a>
+    <a data-cpa href="#" rel="nofollow noopener sponsored" target="_blank" aria-label="Enter now sticky CTA">Enter Now</a>
   </div>
 
   <!-- Footer -->
   <footer class="container">
     <p style="margin-top:12px">Disclaimer: This page is for marketing purposes only and is not affiliated with Walmart®. All trademarks are the property of their respective owners.</p>
     <noscript>
-      JavaScript is disabled. <a href="https://getafilenow.com/show.php?l=0&u=190503&id=68831&subid={SUBID}&subid={SUBID}" rel="nofollow noopener" target="_blank">Enter here</a>.
+      JavaScript is disabled.
+      <a href="https://getafilenow.com/show.php?l=0&u=190503&id=68831&subid={SUBID}"
+         rel="nofollow noopener sponsored" target="_blank">Enter here</a>.
     </noscript>
   </footer>
 
   <script>
-    // ===== CONFIG: your CPA link =====
-    const CPA_URL = 'https://getafilenow.com/show.php?l=0&u=190503&id=68831&subid={SUBID}&subid={SUBID}';
+    // ===== CONFIG: your CPA link (PropellerAds will replace {SUBID}) =====
+    const CPA_BASE = 'https://getafilenow.com/show.php?l=0&u=190503&id=68831';
+    const CPA_URL  = `${CPA_BASE}&subid={SUBID}`;
 
-    // Add UTM parameters from this page to the CPA URL
+    // Append page UTM params to CPA URL (if present)
     function withUTM(url){
       try{
         const params = new URLSearchParams(window.location.search);
@@ -162,12 +163,28 @@
       }catch(e){ return url; }
     }
 
+    // Assign final CPA link to all CTA anchors
     function assignCPA(){
       const finalUrl = withUTM(CPA_URL);
       document.querySelectorAll('[data-cpa]').forEach(a=> a.setAttribute('href', finalUrl));
     }
 
-    // Show sticky bar after scrolling
+    // Track CTA clicks in Google Ads
+    function trackCtaClicks() {
+      document.querySelectorAll('[data-cpa]').forEach(a => {
+        a.addEventListener('click', () => {
+          try {
+            gtag('event', 'click', {
+              event_category: 'CTA',
+              event_label: 'Enter Now',
+              value: 1
+            });
+          } catch(e){}
+        });
+      });
+    }
+
+    // Sticky bar on scroll
     const stickyBar = document.getElementById('stickyBar');
     function onScroll(){
       const y = window.scrollY || document.documentElement.scrollTop;
@@ -176,6 +193,7 @@
 
     // Init
     assignCPA();
+    trackCtaClicks();
     onScroll();
     window.addEventListener('scroll', onScroll, {passive:true});
   </script>
